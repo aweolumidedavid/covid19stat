@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Nigeria State Coronavirus Tracker Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1>State Coronavirus Tracker Application</h1>
+    <p>This application lists the current number of cases reported across the the States in Nigeria</p>
+
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+        <p class="lead">Total cases</p>
+        <hr class="my-4">
+        <p>
+            <span>Total cases reported as of today in Nigeria:</span>
+            <span th:text="${totalNewCases}"></span>
+        </p>
+
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>State</th>
+            <th>Total cases</th>
+            <th>Total Deaths</th>
+            <th>Total Recovered</th>
+            <th>New Cases</th>
+            <th>New Deaths</th>
+            <th>New Recoveries</th>
+            <th>Active cases</th>
+        </tr>
+        <tr th:each="stateStat : ${stateStat}">
+            <td th:text="${stateStat.state}"></td>
+            <td th:text="${stateStat.totalCases}">0</td>
+            <td th:text="${stateStat.totalDeaths}">0</td>
+            <td th:text="${stateStat.totalRecovered}">0</td>
+            <td th:text="${stateStat.newCases}">0</td>
+            <td th:text="${stateStat.newDeaths}">0</td>
+            <td th:text="${stateStat.newRecoveries}">0</td>
+            <td th:text="${stateStat.activeCases}">0</td>
+        </tr>
+    </table>
+
+    <hr class="my-4">
+    <h2>Federal Government, State, international grants and individual helps in fighting covid-19</h2>
+    <p>This table shows the lists of materials donated for fighting covid 19 in Nigeria</p>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>No of Face Mask</th>
+            <th>No of Testing Kits</th>
+            <th>No of Ventilators</th>
+            <th>Amount </th>
+        </tr>
+        <tr th:each="supplyToTheCountry : ${suppliesToTheCountry}">
+            <td th:text="${supplyToTheCountry.supplierName}"></td>
+            <td th:text="${supplyToTheCountry.numberOfFaceMask}">0</td>
+            <td th:text="${supplyToTheCountry.numberOfTestingKit}">0</td>
+            <td th:text="${supplyToTheCountry.numberOfVentilators}">0</td>
+            <td th:text="${supplyToTheCountry.totalWorth}">0</td>
+        </tr>
+    </table>
+
+    <hr class="my-4">
+    <h3>Federal Government, State, international grants and individual helps in fighting covid-19</h3>
+    <p>This table shows the lists of individuals that support the Country with funds to fight covid 19 in Nigeria</p>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Amount </th>
+        </tr>
+        <tr th:each="supplyToTheCountry : ${supplyToNigeria}">
+            <td th:text="${supplyToTheCountry.name}"></td>
+            <td th:text="${supplyToTheCountry.amount}">0</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
